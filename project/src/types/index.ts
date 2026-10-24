@@ -1,0 +1,9 @@
+export type Profile = { id: string; display_name: string; avatar_url: string | null; role: 'user' | 'admin'; bio: string; created_at: string; updated_at: string; };
+export type Project = { id: string; name: string; description: string; color: string; owner_id: string; created_at: string; updated_at: string; };
+export type ProjectMember = { id: string; project_id: string; user_id: string; role: 'owner' | 'member' | 'admin'; joined_at: string; profile?: Profile; };
+export type TaskStatus = 'todo' | 'in_progress' | 'completed';
+export type TaskPriority = 'low' | 'medium' | 'high' | 'urgent';
+export type Task = { id: string; project_id: string; title: string; description: string; status: TaskStatus; priority: TaskPriority; position: number; due_date: string | null; assignee_id: string | null; created_by: string; created_at: string; updated_at: string; assignee?: Profile | null; creator?: Profile | null; };
+export type Comment = { id: string; task_id: string; user_id: string; body: string; created_at: string; updated_at: string; profile?: Profile; };
+export type Notification = { id: string; user_id: string; project_id: string | null; task_id: string | null; type: 'assignment' | 'comment' | 'mention' | 'member_added' | 'task_updated' | 'deadline'; message: string; read: boolean; created_at: string; };
+export type ActivityLog = { id: string; project_id: string; user_id: string | null; action: string; entity_type: string; entity_id: string | null; description: string; created_at: string; profile?: Profile | null; };
